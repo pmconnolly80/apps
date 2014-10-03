@@ -1,0 +1,56 @@
+
+/** Topmost bar **/
+#googlebar {
+  background-color: #F1F1F1;
+  border: 5px solid transparent;
+  border-bottom: 1px solid #DDDDDD;
+}
+#googlebar h1 {
+  background: url(assets/google_logo.png);
+  background-size: 112px 44px;
+  background-repeat: no-repeat;
+  text-indent: -3000px;
+  margin: 10px;
+}
+#googlebar .form-control {
+  margin: 10px 0;
+}
+
+/** Gmail horizontal toolbar */
+#googlesubbar {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 10px 0;
+}
+.gmail-heading, .gmail-heading a {
+  color: #dd4b39;
+  font-size: 14pt;
+  line-height: 29px;
+  cursor: pointer;
+  padding: 5px;
+}
+.gmail-toolbar .btn {
+  background-color: #F1F1F1;
+}
+.gmail-toolbar .btn-group {
+  margin-right: 8px;
+}
+
+/** Gmail vertical navbar */
+.gmail-navbar {
+  padding: 10px;
+}
+.gmail-navbar .nav {
+  margin-top: 10px;
+}
+.gmail-navbar .nav>li>a {
+  padding: 0;
+  color: black;
+}
+
+/** Gmail messages area */
+.gmail-messages {
+  padding: 10px;
+}
+.gmail-messages table {
+  background-color: #F1F1F1;
+}
