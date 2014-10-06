@@ -21,18 +21,16 @@
           .when('/contacts/:contactid', {template: 'Details of contact {{params.contactid}}'})
           .otherwise({redirectTo: '/inbox'});
       })
-      .controller('NavigationCtrl', function($scope, $routeParams, $route) {
-        // Publish $routeParams on the scope just to show how matched named groups
-        // such as :msgid or :label can be retrieved.
+      .controller('MainCtrl', function($scope, $routeParams, $route) {
+        // Publish $routeParams on the scope to show how matched named groups
+        // such as :msgid or :label can be used in the view.
         $scope.params = $routeParams;
       });
   </script>
 </head>
-<body>
+<body ng-controller="MainCtrl">
 
-  <p>Note how routeParams can be retrieved. Note how links help create navigation. Default path with "otherwise".</p>
-
-  <div class="container" ng-controller="NavigationCtrl">
+  <div class="container">
     <div class="row">
       <div class="col-xs-3 well">
         <!-- Nav -->
