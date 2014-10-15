@@ -1,10 +1,9 @@
 /*global _*/
-
 /**
  * @file
  * Service to handle authentication tasks (login, logout...).
  *
- * Heavily based on https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
+ * Based on https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
  */
 (function () {
   'use strict';
