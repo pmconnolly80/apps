@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-3 well">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a ui-sref="contacts.all">All</a></li>
+      <li><a ui-sref="contacts.group({groupId: 'family'})">Family</a></li>
+      <li><a ui-sref="contacts.group({groupId: 'friends'})">Friends</a></li>
+      <li><a ui-sref="contacts.group({groupId: 'work'})">Work</a></li>
+    </ul>
+  </div>
+  <div class="col-xs-5 well" ui-view>
+  </div>
+</div>

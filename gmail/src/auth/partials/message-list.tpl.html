@@ -1,0 +1,49 @@
+<h1>Messages</h1>
+
+<div class="alert alert-info">
+  <p>This screen should display the list of Gmail messages for the current user (right now, it only displays dummy data).</p>
+  <p>This screen is accessible only if the current user has granted the <code>{{USER_SCOPES.gmail_read}}</code> scope to our app.</p>
+  <p>If you try accessing this screen without being authenticated or without being authorized (i.e. without having granted the proper scope), you will get an error.<p>
+  <h4>How does it work?</h4>
+  <ul>
+    <li>In a top-level controller, we listen to state changes with <code>$rootScope.$on('$stateChangeStart')</code>.</li>
+    <li>Whenever the state changes, we check that the current user (<code>$scope.currentUser</code>) possesses one of the scopes that the next state authorizes (<code>nextState.data.authorizedScopes</code>):
+      <ul>
+        <li>If he does, we proceed.</li>
+        <li>If he doesn't, we cancel the state change with <code>event.preventDefault()</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+    <button class="btn btn-info" ng-click="compose()" ng-disabled="!isAuthorized(USER_SCOPES.gmail_compose)">Compose Message</button>
+  </div>
+  <div class="col-xs-10">
+    <p ng-if="!isAuthorized(USER_SCOPES.gmail_compose)">This button is disabled because you haven't granted the <code>{{USER_SCOPES.gmail_compose}}</code> scope to the application. To enable the button, go back to the <a href="" ui-sref="login">Login screen</a> and click the "Login (Gmail Compose)" button.</p>
+    <p ng-if="isAuthorized(USER_SCOPES.gmail_compose)">This button is enabled because you have granted the <code>{{USER_SCOPES.gmail_compose}}</code> scope to the application.</p>
+  </div>
+</div>
+
+<p>&nbsp;</p>
+
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td class="col-xs-2">Sender</td>
+      <td class="col-xs-8">Long subject line for message 1</td>
+      <td class="col-xs-2">Oct 10</td>
+    </tr>
+    <tr>
+      <td class="col-xs-2">Sender</td>
+      <td class="col-xs-8">Long subject line for message 2</td>
+      <td class="col-xs-2">Oct 10</td>
+    </tr>
+    <tr>
+      <td class="col-xs-2">Sender</td>
+      <td class="col-xs-8">Long subject line for message 3</td>
+      <td class="col-xs-2">Oct 10</td>
+    </tr>
+  </tbody>
+</table>

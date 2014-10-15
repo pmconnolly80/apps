@@ -1,0 +1,24 @@
+<h1>Compose Message</h1>
+
+<div class="alert alert-info">
+  <p>This screen should display a form to compose an email message.</p>
+  <p>This screen is accessible only if the current user has granted the <code>{{USER_SCOPES.gmail_compose}}</code> scope to our app.</p>
+  <p>If you try accessing this screen without being authenticated or without being authorized (i.e. without having granted the proper scope), you will get an error.<p>
+</div>
+
+<form role="form">
+  <div class="form-group">
+    <label>To</label>
+    <input type="email" class="form-control" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label>Subject</label>
+    <input type="text" class="form-control" placeholder="Subject">
+  </div>
+  <div class="form-group">
+    <label>Message</label>
+    <textarea class="form-control" rows="5"></textarea>
+  </div>
+  <button class="btn btn-primary">Send</button>
+  <button class="btn btn-default" ng-click="cancelCompose()">Cancel</button>
+</form>

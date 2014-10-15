@@ -1,0 +1,43 @@
+<div class="panel panel-default" ng-controller="LoginCtrl">
+  <div class="panel-heading">
+    <h3 class="panel-title">Login</h3>
+  </div>
+  <div class="panel-body">
+
+    <div class="alert alert-info">
+      <p><strong>Why no login form?</strong></p>
+      <p>Since we're using OAuth to authenticate the user, submitting login information is done at the OAuth provider (i.e. Google). The user provides his credentials to Google and Google returns an auth token if authentication and authorization were successful.</p>
+      <p>Our app never knows the user credentials and shouldn't provide a login form, just a button to trigger the OAuth sequence.<p>
+    </div>
+
+    <div class="row" ng-if="currentUser">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="alert alert-danger">
+          <p><strong>Warning!</strong> You're viewing the Login screen while being already authenticated.</p>
+          <p>In a real application, you would probably redirect the user to another screen in that situation. To do so, you could use the following code:</p>
+<pre>$rootScope.$on('$stateChangeStart', function (event, next) {
+  if (next.name == 'login' &amp;&amp; AuthService.isAuthenticated()) {
+    $state.go('messages');
+  }
+});</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-1 text-center">
+        <p><button class="btn btn-primary btn-lg" ng-click="login(USER_SCOPES.gmail_read)">Login (Gmail Readonly)</button></p>
+        <p>Clicking this button triggers the OAuth sequence with a requested scope of <code>{{USER_SCOPES.gmail_read}}</code>.</p>
+        <p>If you give your consent, this app will be able to read all resources and their metadata in your Gmail account but no write operations will be allowed.</p>
+        <p>View <a href="https://developers.google.com/gmail/api/auth/scopes">Gmail Auth Scopes</a>.</p>
+      </div>
+      <div class="col-xs-5 text-center">
+        <p><button class="btn btn-primary btn-lg" ng-click="login(USER_SCOPES.gmail_compose)">Login (Gmail Compose)</button></p>
+        <p>Clicking this button triggers the OAuth sequence with a requested scope of <code>{{USER_SCOPES.gmail_compose}}</code>.</p>
+        <p>If you give your consent, this app will be able to create, read, update, and delete drafts, and to send messages and drafts.</p>
+        <p>View <a href="https://developers.google.com/gmail/api/auth/scopes">Gmail Auth Scopes</a>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>

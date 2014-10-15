@@ -1,0 +1,5 @@
+<p>Inbox (list of messages)</p>
+
+<p ng-if="whichRouter == 'ngRoute'"><a href="#/inbox/45">View message details</a></p>
+
+<p ng-if="whichRouter == 'ui-router'"><a ui-sref="messages.details({msgId: 45})">View message details</a></p>

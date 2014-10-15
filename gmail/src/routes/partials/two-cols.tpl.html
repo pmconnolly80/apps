@@ -1,0 +1,9 @@
+<!-- This template lets us create two sub-regions in the ng-view (one per column). -->
+<div class="row" ng-controller="TwoColsCtrl">
+  <div class="col-xs-3 well">
+    <div ng-include="subnavUrl"></div>
+  </div>
+  <div class="col-xs-9 well">
+    <div ng-include="contentUrl"></div>
+  </div>
+</div>

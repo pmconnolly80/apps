@@ -1,0 +1,15 @@
+<h1>Logged Out Successfully!</h1>
+
+<p>Our application is notified of the user logging out by an event broadcasted to the entire app.</p>
+
+<p>We chose to react to this event by redirecting the user to this screen but you could take him to another screen like the <a href="" ui-sref="login">Login screen</a>.</p>
+
+<p>Here is the code we used:</p>
+
+<pre>
+$rootScope.$on(AUTH_EVENTS.logoutSuccess, function() {
+  $state.go('logged-out');
+});
+</pre>
+
+<p><a href="" ui-sref="login" class="btn btn-primary">Login</a></p>

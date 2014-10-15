@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="gmailApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Gmail routes with ngRoute (1)</title>
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="01_ngroute1.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3 well">
+
+        <!-- Nav -->
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#/inbox">Inbox</a></li>
+          <li><a href="#/sent">Sent</a></li>
+          <li><a href="#/drafts">Drafts</a></li>
+          <li class="divider"><hr></li>
+          <li><a href="#/label/work">Label "work"</a></li>
+          <li><a href="#/label/personal">Label "personal"</a></li>
+          <li class="divider"><hr></li>
+          <li><a href="#/contacts">Contacts</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-5 well">
+        <!-- Here, the template of the current route will be included dynamically. -->
+        <div ng-view></div>
+      </div>
+
+    </div>
+
+  </div><!-- /.container -->
+</body>
+</html>

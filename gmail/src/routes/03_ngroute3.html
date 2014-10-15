@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="gmailApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Gmail routes with ngRoute (3)</title>
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <script src="../bower_components/lodash/dist/lodash.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../utils.js"></script>
+  <script src="../gmail_mock.js"></script>
+  <script src="03_ngroute3.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Main Nav -->
+    <ul class="nav nav-pills">
+      <li><a href="#/inbox">Messages</a></li>
+      <li><a href="#/contacts">Contacts</a></li>
+    </ul>
+
+    <!-- Here, the template of the current route will be included dynamically. -->
+    <div ng-view></div>
+
+  </div><!-- /.container -->
+</body>
+</html>

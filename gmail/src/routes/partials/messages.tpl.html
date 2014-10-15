@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-3 well">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a ui-sref="messages.inbox">Inbox</a></li>
+      <li><a ui-sref="messages.sent">Sent</a></li>
+      <li><a ui-sref="messages.drafts">Drafts</a></li>
+      <li class="divider"><hr></li>
+      <li><a ui-sref="messages.label({labelId: 'work'})">Label "work"</a></li>
+      <li><a ui-sref="messages.label({labelId: 'personal'})">Label "personal"</a></li>
+    </ul>
+  </div>
+  <div class="col-xs-5 well" ui-view>
+  </div>
+</div>

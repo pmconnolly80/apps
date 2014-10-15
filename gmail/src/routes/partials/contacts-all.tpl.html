@@ -1,0 +1,5 @@
+<p>Contacts</p>
+
+<p ng-if="whichRouter == 'ngRoute'"><a href="#/contacts/42">View contact details</a></p>
+
+<p ng-if="whichRouter == 'ui-router'"><a ui-sref="contacts.details({contactId: 42})">View contact details</a></p>

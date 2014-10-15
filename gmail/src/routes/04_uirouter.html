@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="gmailApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Gmail routes with ui-router</title>
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="04_uirouter.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+  <div class="container">
+
+    <!-- Main Nav -->
+    <ul class="nav nav-pills">
+      <li><a ui-sref="messages.inbox">Messages</a></li>
+      <li><a ui-sref="contacts.all">Contacts</a></li>
+    </ul>
+
+    <!-- Here, the template of the current state will be included dynamically. -->
+    <div ui-view></div>
+
+  </div><!-- /.container -->
+</body>
+</html>

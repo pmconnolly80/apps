@@ -1,0 +1,133 @@
+
+Required Features
+=================
+
+- User Login & Signup: lets you easily sign in and sign up your users with any Social Provider, Enterprise Provider or Username and password. You can use the UI already made by Auth0 or create your own.
+- Persistent user authentication: keeping the user logged in after page refresh, browser closed and so on.
+- Authenticated API calls: We'll take care of automatically adding the JWT in every request that is made to your API after the user is authenticated.
+- Events/Promise based services: Our service supports both Events based actions as well as promise based ones
+- Token management: We'll handle the token storage and configuration all the time. You don't even need to know there's a token.
+
+
+Google Signout
+==============
+
+https://developers.google.com/+/web/signin/sign-out
+
+
+Exemples pour l'authentification
+================================
+
+- angular-app: https://github.com/angular-app/angular-app/tree/master/client/src/common/security
+
+- auth0: https://github.com/auth0/auth0-angular
+         https://github.com/auth0/auth0.js
+
+    authProvider.init(options) -- Configure the auth service.
+    authProvider.on(event, handler) -- React to authentication events (loginSucces, loginFailure, logout...)
+
+    // This automatically adds the token in every request
+    $httpProvider.interceptors.push('authInterceptor');
+
+    auth.signin() -- Sign a user in // Show the popup
+    auth.signup()
+    auth.signout() -- Sign a user out
+
+    auth.profile -- This property contains the profile from the user. This will be filled after the user has logged in successfully.
+    auth.isAuthenticated -- This flag returns whether there's a user authenticated or not.
+
+- firebase: https://www.firebase.com/docs/web/guide/user-auth.html
+
+    ref.getAuth() - Monitoring user authentication state
+
+- https://github.com/userapp-io/userapp-angular
+
+
+Checking initial state
+======================
+
+AngularFire
+-----------
+
+https://github.com/firebase/angularfire-seed/blob/master/app/js/app.js
+
+  .run(['simpleLogin', function(simpleLogin) {
+    console.log('run'); //debug
+    simpleLogin.getUser();
+  }]
+
+Global user object
+==================
+
+Source: https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
+
+Once a user is logged in, his information should probably be displayed somewhere (e.g. in the top-right corner). In order to do this, the user object must be referenced in the $scope object, preferably in a place that’s accessible to the entire application. While $rootScope would be an obvious first choice, I try to refrain from using $rootScope too much (actually I use it only for global event broadcasting). Instead my preference is to define a controller on the root node of the application, or at least somewhere high up in the DOM tree. The body tag is a good candidate:
+
+<body ng-controller="ApplicationController">
+  ...
+</body>
+
+The ApplicationController is a container for a lot of global application logic, and an alternative to Angular’s run function. Since it’s at the root of the $scope tree, all other scopes will inherit from it (except isolate scopes). It’s a good place to define the currentUser object:
+
+.controller('ApplicationController', function ($scope,
+                                               USER_ROLES,
+                                               AuthService) {
+  $scope.currentUser = null;
+  $scope.userRoles = USER_ROLES;
+  $scope.isAuthorized = AuthService.isAuthorized;
+
+  $scope.setCurrentUser = function (user) {
+    $scope.currentUser = user;
+  };
+})
+
+
+JSON Web Tokens
+===============
+
+JSON Web Tokens - http://jwt.io/
+
+
+Token Flow
+----------
+
+http://stackoverflow.com/a/21650293/1153681
+
+VINCE: Excellente explication du flow à suivre avec les tokens et des responsabilités d'AngularJS :
+- Stocker le token renvoyé par le serveur en cas de login successful (dans sessionStorage ou localStorage)
+- Utiliser un interceptor pour envoyer le token à chaque requête (Authorization: Bearer) et intercepter les réponses 401
+
+So generating and verifying is not something you do on the client side.
+
+The flow goes something like this:
+
+Client sends the user provided login credentials to the server.
+Server authenticates credentials and responds with a generated token.
+Client stores the token somewhere (local storage, cookies, or just in memory).
+Client sends the token as an authorization header on every request to the server.
+Server verifies the token and acts accordingly with either sending the requested resource, or an 401 (or something alike).
+
+refreshToken
+------------
+
+Bonne explication de refreshToken : https://github.com/auth0/auth0-angular/blob/master/docs/refreshToken.md
+
+
+Server Side Authentication
+==========================
+
+Now that the user was authenticated on the client side, you want to make sure that every time an API is called, the user attributes are sent in a secure way.
+
+https://github.com/auth0/auth0-angular/blob/master/docs/backend.md
+
+
+PHP Backend
+-----------
+
+TUTO: https://docs.auth0.com/server-apis/php
+CODE: https://github.com/auth0/auth0-PHP/tree/master/examples/basic-api
+
+Uses these libraries:
+- https://github.com/firebase/php-jwt -- A simple library to encode and decode JSON Web Tokens (JWT) in PHP.
+- https://github.com/bramus/router -- A lightweight and simple object oriented PHP Router.
+
