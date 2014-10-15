@@ -14,7 +14,7 @@
       <div class="col-xs-8 col-xs-offset-2">
         <div class="alert alert-danger">
           <p><strong>Warning!</strong> You're viewing the Login screen while being already authenticated.</p>
-          <p>In a real application, you would probably redirect the user to another screen in that situation. To do so, you could use the following code:</p>
+          <p>You can <a href="" ui-sref="messages">go directly to the Message List</a>, but in a real application, you would probably redirect the user automatically. To do so, you could use the following code:</p>
 <pre>$rootScope.$on('$stateChangeStart', function (event, next) {
   if (next.name == 'login' &amp;&amp; AuthService.isAuthenticated()) {
     $state.go('messages');
