@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" ng-app="gmailApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Gmail Clone with AngularJS</title>
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="style.css" rel="stylesheet" media="screen">
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row" id="googlebar">
+      <div class="col-xs-3 col-md-2">
+        <h1>Google</h1>
+      </div>
+      <div class="col-xs-6 col-md-7">
+        <div class="form-group">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-xs-3 col-md-3">
+        <div class="pull-right">Username</div>
+      </div>
+    </div>
+
+    <div class="row" id="googlesubbar">
+
+      <div class="col-xs-3 col-md-2">
+        <div class="gmail-heading"><a href="#">Gmail</a></div>
+      </div>
+
+      <div class="col-xs-9 col-md-10">
+        <ng-include src="'partials/messages-toolbar.tpl.html'"></ng-include>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 col-md-2 gmail-navbar">
+        <ng-include src="'partials/messages-nav.tpl.html'"></ng-include>
+      </div>
+      <div class="col-xs-9 col-md-10 gmail-messages">
+        <ng-include src="'partials/messages-list.tpl.html'"></ng-include>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

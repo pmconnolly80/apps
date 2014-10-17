@@ -6,7 +6,7 @@
   border-bottom: 1px solid #DDDDDD;
 }
 #googlebar h1 {
-  background: url(assets/google_logo.png);
+  background: url(google_logo.png);
   background-size: 112px 44px;
   background-repeat: no-repeat;
   text-indent: -3000px;
@@ -51,6 +51,6 @@
 .gmail-messages {
   padding: 10px;
 }
-.gmail-messages table {
+.messages-list {
   background-color: #F1F1F1;
 }
