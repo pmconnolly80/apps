@@ -37,7 +37,7 @@
     <div ng-hide="isLoading">
       <h4>currentUser (for debugging purposes)</h4>
       <pre>{{currentUser|json}}</pre>
-      <p ng-if="currentUser"><button class="btn btn-danger" ng-click="logout()">Logout</button></p>
+      <p ng-if="isAuthenticated()"><button class="btn btn-danger" ng-click="logout()">Logout</button></p>
     </div>
 
   </div>

@@ -82,7 +82,7 @@
       }
 
       /**
-       * Log in the user while requesting a specific Google `authScope`.
+       * Authenticate the user while requesting a specific Google authorization scope.
        *
        * Initiate the OAuth 2.0 authorization process without using "immediate mode".
        * The browser will display a popup window prompting the user authenticate and authorize.

@@ -11,13 +11,6 @@ ARTICLE: Créer les routes avec ngRoute
 
 J'ai placé le contrôleur sur le parent "deux colonnes" pour simplifier.
 
-Limites de ngRoute (02_ngroute2.html)
--------------------------------------
-
-- Beaucoup de répétitions dans le code : le template parent (`two-cols.tpl.html`) est répété dans chaque route même s'il ne change pas.
-- La hiérarchie des templates est rechargée à chaque changement de route. Comment le prouver ? Afficher un nombre random dans le template.
-- Dans la définition de chaque route, on ne peut mettre qu'un seul contrôleur avec la propriété `controller`. Or avec notre système, on a trois templates par route : le template qui matérialise les deux colonnes, le template de la colonne de gauche, et celui de la colonne de droite. Ça aurait été bien d'avoir un contrôleur par template. (Bien-sûr on peut toujours mettre le contrôleur en dur directement dans les templates avec la directive `ng-controller`, mais cela empêche de réutiliser un template avec un autre contrôleur).
-
 
 ARTICLE: Créer les routes avec ui-router
 ========================================
@@ -30,15 +23,6 @@ Remarques sur mon code :
 
 Comme dit la doc : An abstract state can have child states but can not get activated itself. An 'abstract' state is simply a state that can't be transitioned to. It is activated implicitly when one of its descendants are activated. Some examples of how you might use an abstract state are: To prepend a url to all child state urls. To insert a template with its own ui-view(s) that its child states will populate. Or, c'est exactement ce qu'on veut faire
 
-
-REFACTORISATION: 03_ngroute3.html
-=================================
-
-- Utilisation de deux contrôleurs :
-  - Un contrôleur `MainController` appliqué à la balise `<body>` via la directive `ng-controller`.
-  - Un contrôleur spécifique à la vue affichée, déclarée via la propriété `controller` de la route du contrôleur dans $routeConfig (et non plus directement dans le template avec `ng-controller`). Pourquoi ? Pour pouvoir passer des valeurs au contrôleur via `resolve`.
-- Explication de `resolve` et des deferred.
-- Utilisation du service GmailMock pour obtenir des fausses données.
 
 
 Routing Questions
